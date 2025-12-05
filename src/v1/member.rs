@@ -53,7 +53,7 @@ mod tests {
 
         for i in 0..5 {
             let id = format!("B{}", i);
-            assert!(m.borrow(&id).is_ok());
+            assert!(new_member.borrow(&id).is_ok());
         }
 
         let result = new_member.borrow("B5");
@@ -63,7 +63,7 @@ mod tests {
 
     #[test]
     fn return_borrowed_item() {
-        let new_member = Member::new("Clark");
+        let mut new_member = Member::new("Clark");
 
         let result = new_member.return_item("B1");
         assert!(result.is_err());
